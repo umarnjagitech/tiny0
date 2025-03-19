@@ -39,6 +39,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
+                    DemoScreen()
+
                 }
 
             }
@@ -56,7 +58,7 @@ fun DemoText(message: String, fontSize: Float){
 }
 
 @Preview(
-    showSystemUi = true
+    showSystemUi = true, showBackground = true, backgroundColor = 0xFFFFFFFF
 )
 @Composable
 fun DemoTextPreview(){
