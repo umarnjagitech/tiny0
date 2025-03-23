@@ -1,6 +1,7 @@
 package com.example.tiny0
 
 import android.os.Bundle
+import android.widget.Switch
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -11,11 +12,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.dp
 import com.example.tiny0.ui.theme.Tiny0Theme
 import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.Color
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,8 +104,39 @@ fun DemoScreen() {
             style = MaterialTheme.typography.headlineMedium,
             text = sliderPosition.toInt().toString() + "sp"
         )
-
-
+        //CustomList(listOf("One", "Two", "Three", "Four"))
+        Spacer(modifier = Modifier.height(150.dp))
+        CustomSwitch()
 
     }
+}
+
+@Composable
+fun CustomSwitch() {
+    
+    val checked = remember { mutableStateOf(true) }
+
+    Column {
+        Switch(
+            checked = checked.value,
+            onCheckedChange = { checked.value = it }
+        )
+        if (checked.value) {
+            Text("Switch is on")
+        } else {
+            Text("Switch is off.")
+        }
+    }
+}
+
+@Composable
+fun CustomList(items: List<String>) {
+    
+    Column {
+        for (item in items) {
+            Text(item)
+            Divider(color = Color.Black)
+        }
+    }
+
 }
